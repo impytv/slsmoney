@@ -57,19 +57,19 @@ functions:
           path: table
           method: POST
 
-  saveUser:
-    handler: handler.saveUser
-    events:
-      - http:
-          path: user
-          method: POST
-
-  getUser:
-    handler: handler.getUser
-    events:
-      - http:
-          path: user
-          method: GET
+#  saveUser:
+#    handler: handler.saveUser
+#    events:
+#      - http:
+#          path: user
+#          method: POST
+#
+#  getUser:
+#    handler: handler.getUser
+#    events:
+#      - http:
+#          path: user
+#          method: GET
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events

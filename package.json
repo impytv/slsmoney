@@ -11,5 +11,9 @@
   "dependencies": {
     "dynamodb": "*",
     "es6-promise": "^4.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/username/repository.git"
   }
 }

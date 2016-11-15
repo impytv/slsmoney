@@ -21,13 +21,16 @@ module.exports.createTableIfNeeded = (event, context, callback) => {
     usersDal.createTableIfNeeded().then(() => {
       const response = {
         statusCode: 200,
-        body: 'Table created'
+        body: JSON.stringify({
+          message: 'Table created',
+          input: event,
+        }),
       };
 
       callback(null, response);
     });
 };
-
+/*
 module.exports.getUser = (event, context, callback) => {
   if (event.queryStringParameters && event.queryStringParameters.id) {
     usersDal.getUser(event.queryStringParameters.id).then((user) => {
@@ -76,4 +79,4 @@ module.exports.saveUser = (event, context, callback) => {
 
     callback(null, response);
   }
-};
+};*/
