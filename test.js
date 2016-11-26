@@ -23,20 +23,13 @@ var event = {
 
 //event.queryStringParameters.id
 
-usersDal.createTableIfNeeded(event, this, (createPromise) => {
-  createPromise.then(() => {
-    console.log('createTableIfNeeded done');
-    usersDal.saveUser(event, this, (savePromise) => {
-      savePromise.then((saveResult) => {
-        console.log('saveUser done');
-        console.log(saveResult);
-        usersDal.getUser(event, this, (promise) => {
-          promise.then((result) => {
-            console.log(result);
-          });
-        });
-      });
+usersDal.createTableIfNeeded(event, this, () => {
+  console.log('createTableIfNeeded done');
+  usersDal.saveUser(event, this, (saveError, saveResult) => {      
+    console.log('saveUser done');
+    console.log(saveResult);
+    usersDal.getUser(event, this, (getError, getResult) => {
+        console.log(getResult);
     });
   });
-}
-);
+});

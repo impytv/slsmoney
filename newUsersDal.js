@@ -10,43 +10,25 @@ module.exports = class Users {
   }
 
   createTableIfNeeded(event, context, callback) {
-    callback(new Promise((resolve, reject) => {
-      ddb.createTable(TABLE, { hash: ['id', ddb.schemaTypes().string] },
-                      {read: 1, write: 1}, (err, details) => {
-                        resolve();
-                      });
-    }));
+    this.db.createTable(TABLE, { hash: ['id', this.db.schemaTypes().string] },
+    {read: 1, write: 1}, (err, details) => {
+      callback();
+    });
   }
 
   saveUser(event, context, callback) {
-    callback(new Promise((resolve, reject) => {
-        var user = JSON.parse(event.body);
-        ddb.putItem(TABLE, user, {}, (err, details) => {
-          if (err) {
-            console.log('Err');
-            reject(err);
-          }
-          else {
-            resolve(user);
-          }
-        });
-    }));
+      var user = JSON.parse(event.body);
+      this.db.putItem(TABLE, user, {}, (err, details) => {        
+        callback(err, details);
+      });
   }
+
 
   getUser(event, context, callback) {
     if (event && event.queryStringParameters && event.queryStringParameters.id) {
-      callback(new Promise((resolve, reject) => {
         this.db.getItem(TABLE, event.queryStringParameters.id, undefined, {}, (err, details) => {
-          console.log(err);
-          console.log(details);
-          if (err) {
-            reject(err);
-          }
-          else {
-            resolve(details);
-          }
+          callback(err, details);
         });
-      }));
+      }
     }
   }
-}

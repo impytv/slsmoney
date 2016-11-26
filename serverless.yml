@@ -50,20 +50,20 @@ functions:
           path: hello
           method: GET
 
-#  createTable:
-#    handler: handler.createTableIfNeeded
-#    events:
-#      - http:
-#          path: table
-#          method: POST
+  createTable:
+    handler: handler.createTableIfNeeded
+    events:
+      - http:
+          path: table
+          method: POST
+          
+  saveUser:
+    handler: handler.saveUser
+    events:
+      - http:
+          path: user
+          method: POST
 
-#  saveUser:
-#    handler: handler.saveUser
-#    events:
-#      - http:
-#          path: user
-#          method: POST
-#
   getUser:
     handler: handler.getUser
     events:
