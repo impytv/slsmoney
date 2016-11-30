@@ -42,21 +42,21 @@ provider:
 #    - exclude-me.js
 #  artifact: my-service-code.zip
 
-functions:
-  helloworld:
-    handler: handler.hello
-    events:
-      - http:
-          path: hello
-          method: GET
+#  helloworld:
+#    handler: handler.hello
+#    events:
+#      - http:
+#          path: hello
+#          method: GET
 
+functions:
   createTable:
     handler: handler.createTableIfNeeded
     events:
       - http:
           path: table
           method: POST
-          
+
   saveUser:
     handler: handler.saveUser
     events:

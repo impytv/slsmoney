@@ -2,7 +2,9 @@
 
 var config = require('./config.js');
 var db = require('dynamodb').ddb(config);
-var usersDal = require('./newUsersDal.js')(db);
+var UsersDal = require('./newUsersDal.js');
+
+var usersDal = new UsersDal(db);
 
 module.exports.hello = (event, context, callback) => {
   const response = {
